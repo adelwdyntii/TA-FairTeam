@@ -14,23 +14,24 @@ class StudentClassController extends Controller
      */
 
      public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            $isAllowed = false;
-            if (auth()->check()) {
-                $user = auth()->user();
-                $isAllowed = $user->role == 'admin';
-            }
-            if (!$isAllowed) {
-                return abort(403);
-            }
-            return $next($request);
-        });
-    }
+     {
+         $this->middleware(function ($request, $next) {
+             $isAllowed = false;
+             if (auth()->check()) {
+                 $user = auth()->user();
+                 $isAllowed = $user->role == 'admin';
+             }
+             if (!$isAllowed) {
+                 return abort(403);
+             }
+             return $next($request);
+         });
+     }
 
     public function index()
     {
-        echo "tampilkan semua kelas";
+        $classes = StudentClass::orderBy('major')->orderBy('name')->get();
+        return view('student-classes.index', compact('classes'));
     }
 
     /**

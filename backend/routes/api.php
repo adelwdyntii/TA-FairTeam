@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:user')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//route tampil data kelas
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('student-classes', 'StudentClassController')->middleware(['auth']);
