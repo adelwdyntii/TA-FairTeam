@@ -41,7 +41,7 @@ class StudentClassController extends Controller
      */
     public function create()
     {
-        echo "tampilkan form kelas";
+        return view('student-classes.create');
     }
 
     /**
@@ -52,7 +52,16 @@ class StudentClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'major' => 'required',
+        ]);
+        $studentClass = StudentClass::create([
+            'name' => request('name'),
+            'major' => request('major'),
+        ]);
+        session()->flash('successMessage', 'Data saved');
+        return redirect()->back();
     }
 
     /**
@@ -74,7 +83,7 @@ class StudentClassController extends Controller
      */
     public function edit(StudentClass $studentClass)
     {
-        //
+        return view('student-classes.edit', compact('studentClass'));
     }
 
     /**
@@ -86,7 +95,16 @@ class StudentClassController extends Controller
      */
     public function update(Request $request, StudentClass $studentClass)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'major' => 'required',
+        ]);
+        $studentClass->update([
+            'name' => request('name'),
+            'major' => request('major'),
+        ]);
+        session()->flash('successMessage', 'Data updated');
+        return redirect()->back();
     }
 
     /**
