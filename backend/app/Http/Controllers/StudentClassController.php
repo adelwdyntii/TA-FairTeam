@@ -12,9 +12,25 @@ class StudentClassController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $isAllowed = false;
+            if (auth()->check()) {
+                $user = auth()->user();
+                $isAllowed = $user->role == 'admin';
+            }
+            if (!$isAllowed) {
+                return abort(403);
+            }
+            return $next($request);
+        });
+    }
+
     public function index()
     {
-        //
+        echo "tampilkan semua kelas";
     }
 
     /**
@@ -24,7 +40,7 @@ class StudentClassController extends Controller
      */
     public function create()
     {
-        //
+        echo "tampilkan form kelas";
     }
 
     /**
