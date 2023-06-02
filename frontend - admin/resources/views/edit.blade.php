@@ -4,7 +4,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Create Class</div>
+        <div class="card-header">Edit Class</div>
         <div class="card-body">
           @if (session('successMessage'))
             <div class="alert alert-success">
@@ -21,10 +21,12 @@
             </div>
           @endif
           <form method="POST"
-            action="{{ route('student-classes.store') }}">
+            action="{{ route('student-classes.update', $studentClass->id) }}">
             @csrf
+            @method('PUT')
             <div class="form-group row">
-              <label for="name" class="col-md-4 col-form-label text-md-right">
+              <label for="name"
+                class="col-md-4 col-form-label text-md-right">
                 Name
               </label>
               <div class="col-md-6">
@@ -34,7 +36,7 @@
                   @error('name') is-invalid @enderror"
                   id="name"
                   name="name"
-                  value="{{ old('name') }}"
+                  value="{{ old('name', $studentClass->name) }}"
                   required
                   placeholder="ex. RPL-1">
                 @error('name')
@@ -56,7 +58,7 @@
                   @error('major') is-invalid @enderror"
                   id="major"
                   name="major"
-                  value="{{ old('major') }}"
+                  value="{{ old('major', $studentClass->major) }}"
                   required
                   placeholder="ex. Rekayasa Perangkat Lunak">
                 @error('major')
