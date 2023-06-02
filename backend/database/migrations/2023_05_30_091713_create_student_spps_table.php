@@ -15,7 +15,7 @@ class CreateStudentSppsTable extends Migration
     {
         //create table StudentSpp
         Schema::create('student_spps', function (Blueprint $table) {
-            $table->bigIncrement('id');
+            $table->bigIncrements('id');
             $table->unsignedInteger('year');
             $table->unsignedBigInteger('amount')->default(0);
             $table->timestamps();
