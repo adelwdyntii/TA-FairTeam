@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', 'HomeController@index')->name('home');
 //route data kelas
-Route::resource('student-classes', 'StudentClassController')->middleware(['auth']);
+Route::get('/student-classes', [StudentClassController::class,'index']);
 //route data spp
-Route::resource('student-spps', 'StudentSppController')->middleware(['auth']);
+Route::get('/student-spps', [StudentSppController::class,'index']);
+//route data siswa
+Route::get('/student', [StudentController::class,'index']);
