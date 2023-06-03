@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 //route data kelas
-Route::get('/student-classes', [StudentClassController::class,'index']);
+//Route::get('/student-classes', [StudentClassController::class,'index']);
 //route data spp
-Route::get('/student-spps', [StudentSppController::class,'index']);
+//Route::get('/student-spps', [StudentSppController::class,'index']);
 //route data siswa
-Route::get('/student', [StudentController::class,'index']);
+//Route::get('/student', [StudentController::class,'index']);

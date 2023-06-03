@@ -19,3 +19,10 @@ Route::middleware('auth:user')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/home', 'HomeController@index')->name('home');
+//route data kelas
+Route::get('/student-classes', [StudentClassController::class,'index']);
+//route data spp
+Route::get('/student-spps', [StudentSppController::class,'index']);
+//route data siswa
+Route::get('/student', [StudentController::class,'index']);
