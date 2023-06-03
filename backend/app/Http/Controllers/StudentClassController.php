@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentClassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $model;
 
      public function __construct()
      {
@@ -34,22 +30,11 @@ class StudentClassController extends Controller
         return view('student-classes.index', compact('classes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('student-classes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         request()->validate([
@@ -64,35 +49,16 @@ class StudentClassController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\StudentClass  $studentClass
-     * @return \Illuminate\Http\Response
-     */
     public function show(StudentClass $studentClass)
     {
-        //
+        return view('student-classes.show', compact('studentClass'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\StudentClass  $studentClass
-     * @return \Illuminate\Http\Response
-     */
     public function edit(StudentClass $studentClass)
     {
         return view('student-classes.edit', compact('studentClass'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\StudentClass  $studentClass
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, StudentClass $studentClass)
     {
         request()->validate([

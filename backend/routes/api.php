@@ -19,6 +19,3 @@ Route::middleware('auth:user')->get('/user', function (Request $request) {
 });
 
 
-//route tampil data kelas
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('student-classes', 'StudentClassController')->middleware(['auth']);

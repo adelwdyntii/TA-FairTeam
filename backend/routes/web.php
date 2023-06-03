@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentClassController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-
-
+Route::get('/home', 'HomeController@index')->name('home');
+//route data kelas
+Route::resource('student-classes', 'StudentClassController')->middleware(['auth']);
+//route data spp
+Route::resource('student-spps', 'StudentSppController')->middleware(['auth']);
